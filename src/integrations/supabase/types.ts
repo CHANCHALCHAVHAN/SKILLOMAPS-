@@ -14,6 +14,123 @@ export type Database = {
   }
   public: {
     Tables: {
+      connected_accounts: {
+        Row: {
+          created_at: string
+          details: Json
+          handle: string | null
+          id: string
+          last_synced_at: string | null
+          profile_url: string | null
+          provider: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          details?: Json
+          handle?: string | null
+          id?: string
+          last_synced_at?: string | null
+          profile_url?: string | null
+          provider: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          details?: Json
+          handle?: string | null
+          id?: string
+          last_synced_at?: string | null
+          profile_url?: string | null
+          provider?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      linkedin_profiles: {
+        Row: {
+          company: string | null
+          created_at: string
+          current_title: string | null
+          headline: string | null
+          id: string
+          location: string | null
+          profile_url: string | null
+          raw_text: string | null
+          skills: string[]
+          summary: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string
+          current_title?: string | null
+          headline?: string | null
+          id?: string
+          location?: string | null
+          profile_url?: string | null
+          raw_text?: string | null
+          skills?: string[]
+          summary?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          company?: string | null
+          created_at?: string
+          current_title?: string | null
+          headline?: string | null
+          id?: string
+          location?: string | null
+          profile_url?: string | null
+          raw_text?: string | null
+          skills?: string[]
+          summary?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      milestones: {
+        Row: {
+          created_at: string
+          detail: string | null
+          id: string
+          position: number
+          status: string
+          title: string
+          updated_at: string
+          user_id: string
+          week_start: string
+        }
+        Insert: {
+          created_at?: string
+          detail?: string | null
+          id?: string
+          position?: number
+          status?: string
+          title: string
+          updated_at?: string
+          user_id: string
+          week_start?: string
+        }
+        Update: {
+          created_at?: string
+          detail?: string | null
+          id?: string
+          position?: number
+          status?: string
+          title?: string
+          updated_at?: string
+          user_id?: string
+          week_start?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           career_goal: string
