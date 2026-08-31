@@ -46,12 +46,8 @@ function DashboardPage() {
 
   const ask = (text: string) => setPrompt({ text, id: Date.now() });
 
-  const handleSignOut = async () => {
-    await queryClient.cancelQueries();
-    queryClient.clear();
-    await supabase.auth.signOut();
-    navigate({ to: "/auth", replace: true });
-  };
+
+
 
   return (
     <main className="relative min-h-screen overflow-hidden px-6 py-10">
