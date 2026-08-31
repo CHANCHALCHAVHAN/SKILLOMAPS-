@@ -1,4 +1,4 @@
-export const GREETING = "Hii Genuis , How I Can help u today ?";
+export const GREETING = "Hii Genius , How I Can help u today ?";
 
 export type MentorTurn = { role: "mentor" | "you"; text: string };
 
