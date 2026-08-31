@@ -30,8 +30,6 @@ function DashboardPage() {
   const [prompt, setPrompt] = useState<{ text: string; id: number } | null>(null);
   const [name, setName] = useState<string | null>(null);
   const [goal, setGoal] = useState<string | null>(null);
-  const navigate = useNavigate();
-  const queryClient = useQueryClient();
 
   useEffect(() => {
     supabase.auth.getUser().then(async ({ data }) => {
