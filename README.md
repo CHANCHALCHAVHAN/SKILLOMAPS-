@@ -23,6 +23,7 @@ Instead of giving everyone the same courses, Skill Maps analyzes the learner and
 
 <img width="926" height="901" alt="image" src="https://github.com/user-attachments/assets/84f39d73-8783-4ca9-8edf-e050fa35d3e1" />
 
+<img width="1295" height="761" alt="image" src="https://github.com/user-attachments/assets/fd86fd2f-9cc9-4472-8561-2a32c85fc03b" />
 
 <img width="946" height="920" alt="image" src="https://github.com/user-attachments/assets/62521221-07d8-462a-9eb6-26ceb9b789a4" />
 
