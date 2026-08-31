@@ -1,4 +1,4 @@
-# ✨ Skill Maps
+# ✨🚀 Skill Maps 🔥
 
 > **Your career. Your path. Your growth.**
 
