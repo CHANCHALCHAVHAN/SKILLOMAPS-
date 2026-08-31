@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ConnectProfiles } from "@/components/ConnectProfiles";
+import { ConnectAccountsForm } from "@/components/ConnectAccountsForm";
 
 export const Route = createFileRoute("/_authenticated/connect-profiles")({
   head: () => ({
@@ -26,7 +26,7 @@ function ConnectProfilesPage() {
         problems solved and certificates — to keep your learner profile up to date.
       </p>
       <div className="mt-8">
-        <ConnectProfiles />
+        <ConnectAccountsForm />
       </div>
     </div>
   );
