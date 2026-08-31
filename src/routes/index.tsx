@@ -28,9 +28,9 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const [prompt, setPrompt] = useState<string | null>(null);
+  const [prompt, setPrompt] = useState<{ text: string; id: number } | null>(null);
 
-  const ask = (text: string) => setPrompt(`${text} #${Date.now()}`.replace(/ #\d+$/, ""));
+  const ask = (text: string) => setPrompt({ text, id: Date.now() });
 
   return (
     <main className="relative min-h-screen overflow-hidden px-6 py-10">

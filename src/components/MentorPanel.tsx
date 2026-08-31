@@ -4,7 +4,7 @@ import { GREETING, mentorReply, type MentorTurn } from "@/lib/mentor-brain";
 import { useVoiceMentor } from "@/lib/useVoiceMentor";
 import { cn } from "@/lib/utils";
 
-export function MentorPanel({ pendingPrompt }: { pendingPrompt?: string | null }) {
+export function MentorPanel({ pendingPrompt }: { pendingPrompt?: { text: string; id: number } | null }) {
   const [turns, setTurns] = useState<MentorTurn[]>([{ role: "mentor", text: GREETING }]);
   const [input, setInput] = useState("");
   const [greeted, setGreeted] = useState(false);
@@ -21,9 +21,9 @@ export function MentorPanel({ pendingPrompt }: { pendingPrompt?: string | null }
   };
 
   useEffect(() => {
-    if (pendingPrompt) respond(pendingPrompt);
+    if (pendingPrompt) respond(pendingPrompt.text);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pendingPrompt]);
+  }, [pendingPrompt?.id]);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
