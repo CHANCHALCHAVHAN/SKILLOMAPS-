@@ -5,11 +5,11 @@ import { supabase } from "@/integrations/supabase/client";
 
 const LINKS = [
   { to: "/dashboard", label: "Home" },
-  { to: "/my-path", label: "My Path" },
+  { to: "/my-path", label: "My Path & Courses" },
   { to: "/skills", label: "Skills" },
   { to: "/progress", label: "Progress" },
-  { to: "/my-profile", label: "My Profile" },
-  { to: "/connect-profiles", label: "Connect Profiles" },
+  { to: "/my-profile", label: "Profile" },
+  { to: "/connect-profiles", label: "Connect" },
   { to: "/ai-mentor", label: "AI Mentor" },
 ] as const;
 

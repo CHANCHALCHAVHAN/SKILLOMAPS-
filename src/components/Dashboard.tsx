@@ -1,4 +1,5 @@
-import { CalendarClock, Compass, Target, TrendingUp } from "lucide-react";
+import { CalendarClock, Compass, ExternalLink, Lightbulb, Target, TrendingUp, Zap } from "lucide-react";
+import { getRecommendations } from "@/lib/recommender";
 
 const MILESTONES = [
   { title: "Arrays & hashing — 15 problems", done: true },
@@ -13,6 +14,28 @@ const GAPS = [
   { skill: "React / frontend", level: 78 },
   { skill: "SQL & data modeling", level: 60 },
 ];
+
+const PROFILE = {
+  goal: "Backend Engineer",
+  skills: [
+    { skill: "System design", level: 25 },
+    { skill: "Data structures", level: 45 },
+    { skill: "Cloud & deployment", level: 35 },
+    { skill: "SQL & data modeling", level: 60 },
+    { skill: "React / frontend", level: 78 },
+  ],
+  completedIds: [],
+};
+
+const worst = GAPS.reduce((a, b) => (a.level < b.level ? a : b));
+const AI_REC = `Your weakest area is ${worst.skill} at ${worst.level}%. Spend 30 min/day here — it's your highest-impact move toward your goal.`;
+
+const nextMilestone = MILESTONES.find((m) => !m.done);
+const NEXT_ACTION = nextMilestone
+  ? `Up next: "${nextMilestone.title}". Block 45 min today and knock it out — consistency beats intensity.`
+  : "All milestones done! Ask your mentor to generate next week's plan.";
+
+const TOP_RECS = getRecommendations(PROFILE, 2);
 
 export function Dashboard() {
   return (
@@ -63,6 +86,13 @@ export function Dashboard() {
         </ul>
       </article>
 
+      <article className="rounded-2xl border border-primary/40 bg-primary/5 p-5">
+        <p className="flex items-center gap-2 text-xs font-semibold text-primary">
+          <Lightbulb className="size-4" /> AI Recommendation
+        </p>
+        <p className="mt-2 text-sm leading-relaxed">{AI_REC}</p>
+      </article>
+
       <article className="rounded-2xl border border-border bg-card p-5">
         <p className="text-xs text-muted-foreground">Skill gaps</p>
         <ul className="mt-3 space-y-3">
@@ -75,6 +105,35 @@ export function Dashboard() {
               <div className="mt-1 h-1.5 rounded-full bg-secondary">
                 <div className="bg-brand-gradient h-1.5 rounded-full" style={{ width: `${g.level}%` }} />
               </div>
+            </li>
+          ))}
+        </ul>
+      </article>
+
+      <article className="rounded-2xl border border-amber-500/40 bg-amber-500/5 p-5">
+        <p className="flex items-center gap-2 text-xs font-semibold text-amber-500">
+          <Zap className="size-4" /> Next Action
+        </p>
+        <p className="mt-2 text-sm leading-relaxed">{NEXT_ACTION}</p>
+      </article>
+
+      <article className="rounded-2xl border border-border bg-card p-5 md:col-span-2">
+        <p className="text-xs font-semibold text-muted-foreground mb-3">Top recommended courses</p>
+        <ul className="space-y-3">
+          {TOP_RECS.map((c) => (
+            <li key={c.id} className="flex items-start justify-between gap-3">
+              <div>
+                <p className="text-sm font-medium">{c.title}</p>
+                <p className="text-xs text-muted-foreground">{c.platform} · {c.duration}</p>
+              </div>
+              <a
+                href={c.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex shrink-0 items-center gap-1 rounded-full border border-border bg-secondary px-3 py-1 text-xs font-medium hover:bg-secondary/70"
+              >
+                <ExternalLink className="size-3" /> Open
+              </a>
             </li>
           ))}
         </ul>

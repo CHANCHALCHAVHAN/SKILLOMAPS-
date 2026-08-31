@@ -1,6 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Compass, HelpCircle } from "lucide-react";
+import { BarChart2, Compass, HelpCircle, Map, Zap } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Dashboard } from "@/components/Dashboard";
 import { MentorPanel } from "@/components/MentorPanel";
@@ -45,6 +45,7 @@ function DashboardPage() {
   }, []);
 
   const ask = (text: string) => setPrompt({ text, id: Date.now() });
+  const nav = useNavigate();
 
 
 
@@ -91,6 +92,30 @@ function DashboardPage() {
           >
             <HelpCircle className="size-4" />
             I'm confused
+          </button>
+          <button
+            type="button"
+            onClick={() => nav({ to: "/my-path" })}
+            className="flex items-center gap-2 rounded-full border border-border bg-secondary px-7 py-4 text-sm font-semibold transition-colors hover:bg-secondary/70"
+          >
+            <Map className="size-4" />
+            My Path
+          </button>
+          <button
+            type="button"
+            onClick={() => nav({ to: "/skills" })}
+            className="flex items-center gap-2 rounded-full border border-border bg-secondary px-7 py-4 text-sm font-semibold transition-colors hover:bg-secondary/70"
+          >
+            <Zap className="size-4" />
+            Skills
+          </button>
+          <button
+            type="button"
+            onClick={() => nav({ to: "/progress" })}
+            className="flex items-center gap-2 rounded-full border border-border bg-secondary px-7 py-4 text-sm font-semibold transition-colors hover:bg-secondary/70"
+          >
+            <BarChart2 className="size-4" />
+            Progress
           </button>
         </div>
 
