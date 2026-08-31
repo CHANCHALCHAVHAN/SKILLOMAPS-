@@ -12,7 +12,13 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedAiMentorRouteImport } from './routes/_authenticated/ai-mentor'
+import { Route as AuthenticatedConnectProfilesRouteImport } from './routes/_authenticated/connect-profiles'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedMyPathRouteImport } from './routes/_authenticated/my-path'
+import { Route as AuthenticatedMyProfileRouteImport } from './routes/_authenticated/my-profile'
+import { Route as AuthenticatedProgressRouteImport } from './routes/_authenticated/progress'
+import { Route as AuthenticatedSkillsRouteImport } from './routes/_authenticated/skills'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,36 +34,113 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAiMentorRoute = AuthenticatedAiMentorRouteImport.update({
+  id: '/ai-mentor',
+  path: '/ai-mentor',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedConnectProfilesRoute =
+  AuthenticatedConnectProfilesRouteImport.update({
+    id: '/connect-profiles',
+    path: '/connect-profiles',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedMyPathRoute = AuthenticatedMyPathRouteImport.update({
+  id: '/my-path',
+  path: '/my-path',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedMyProfileRoute = AuthenticatedMyProfileRouteImport.update({
+  id: '/my-profile',
+  path: '/my-profile',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedProgressRoute = AuthenticatedProgressRouteImport.update({
+  id: '/progress',
+  path: '/progress',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedSkillsRoute = AuthenticatedSkillsRouteImport.update({
+  id: '/skills',
+  path: '/skills',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/ai-mentor': typeof AuthenticatedAiMentorRoute
+  '/connect-profiles': typeof AuthenticatedConnectProfilesRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/my-path': typeof AuthenticatedMyPathRoute
+  '/my-profile': typeof AuthenticatedMyProfileRoute
+  '/progress': typeof AuthenticatedProgressRoute
+  '/skills': typeof AuthenticatedSkillsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/ai-mentor': typeof AuthenticatedAiMentorRoute
+  '/connect-profiles': typeof AuthenticatedConnectProfilesRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/my-path': typeof AuthenticatedMyPathRoute
+  '/my-profile': typeof AuthenticatedMyProfileRoute
+  '/progress': typeof AuthenticatedProgressRoute
+  '/skills': typeof AuthenticatedSkillsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
+  '/_authenticated/ai-mentor': typeof AuthenticatedAiMentorRoute
+  '/_authenticated/connect-profiles': typeof AuthenticatedConnectProfilesRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/my-path': typeof AuthenticatedMyPathRoute
+  '/_authenticated/my-profile': typeof AuthenticatedMyProfileRoute
+  '/_authenticated/progress': typeof AuthenticatedProgressRoute
+  '/_authenticated/skills': typeof AuthenticatedSkillsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/dashboard'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/ai-mentor'
+    | '/connect-profiles'
+    | '/dashboard'
+    | '/my-path'
+    | '/my-profile'
+    | '/progress'
+    | '/skills'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/dashboard'
+  to:
+    | '/'
+    | '/auth'
+    | '/ai-mentor'
+    | '/connect-profiles'
+    | '/dashboard'
+    | '/my-path'
+    | '/my-profile'
+    | '/progress'
+    | '/skills'
   id:
-    '__root__' | '/' | '/_authenticated' | '/auth' | '/_authenticated/dashboard'
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/auth'
+    | '/_authenticated/ai-mentor'
+    | '/_authenticated/connect-profiles'
+    | '/_authenticated/dashboard'
+    | '/_authenticated/my-path'
+    | '/_authenticated/my-profile'
+    | '/_authenticated/progress'
+    | '/_authenticated/skills'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -89,6 +172,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/ai-mentor': {
+      id: '/_authenticated/ai-mentor'
+      path: '/ai-mentor'
+      fullPath: '/ai-mentor'
+      preLoaderRoute: typeof AuthenticatedAiMentorRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/connect-profiles': {
+      id: '/_authenticated/connect-profiles'
+      path: '/connect-profiles'
+      fullPath: '/connect-profiles'
+      preLoaderRoute: typeof AuthenticatedConnectProfilesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/dashboard': {
       id: '/_authenticated/dashboard'
       path: '/dashboard'
@@ -96,15 +193,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/my-path': {
+      id: '/_authenticated/my-path'
+      path: '/my-path'
+      fullPath: '/my-path'
+      preLoaderRoute: typeof AuthenticatedMyPathRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/my-profile': {
+      id: '/_authenticated/my-profile'
+      path: '/my-profile'
+      fullPath: '/my-profile'
+      preLoaderRoute: typeof AuthenticatedMyProfileRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/progress': {
+      id: '/_authenticated/progress'
+      path: '/progress'
+      fullPath: '/progress'
+      preLoaderRoute: typeof AuthenticatedProgressRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/skills': {
+      id: '/_authenticated/skills'
+      path: '/skills'
+      fullPath: '/skills'
+      preLoaderRoute: typeof AuthenticatedSkillsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAiMentorRoute: typeof AuthenticatedAiMentorRoute
+  AuthenticatedConnectProfilesRoute: typeof AuthenticatedConnectProfilesRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedMyPathRoute: typeof AuthenticatedMyPathRoute
+  AuthenticatedMyProfileRoute: typeof AuthenticatedMyProfileRoute
+  AuthenticatedProgressRoute: typeof AuthenticatedProgressRoute
+  AuthenticatedSkillsRoute: typeof AuthenticatedSkillsRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAiMentorRoute: AuthenticatedAiMentorRoute,
+  AuthenticatedConnectProfilesRoute: AuthenticatedConnectProfilesRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedMyPathRoute: AuthenticatedMyPathRoute,
+  AuthenticatedMyProfileRoute: AuthenticatedMyProfileRoute,
+  AuthenticatedProgressRoute: AuthenticatedProgressRoute,
+  AuthenticatedSkillsRoute: AuthenticatedSkillsRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =

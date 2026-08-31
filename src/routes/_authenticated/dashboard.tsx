@@ -1,11 +1,10 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { useQueryClient } from "@tanstack/react-query";
-import { Compass, HelpCircle, LogOut, Sparkles } from "lucide-react";
+import { Compass, HelpCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import { ConnectProfiles } from "@/components/ConnectProfiles";
 import { Dashboard } from "@/components/Dashboard";
 import { MentorPanel } from "@/components/MentorPanel";
+
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
   head: () => ({
@@ -31,8 +30,6 @@ function DashboardPage() {
   const [prompt, setPrompt] = useState<{ text: string; id: number } | null>(null);
   const [name, setName] = useState<string | null>(null);
   const [goal, setGoal] = useState<string | null>(null);
-  const navigate = useNavigate();
-  const queryClient = useQueryClient();
 
   useEffect(() => {
     supabase.auth.getUser().then(async ({ data }) => {
@@ -49,12 +46,8 @@ function DashboardPage() {
 
   const ask = (text: string) => setPrompt({ text, id: Date.now() });
 
-  const handleSignOut = async () => {
-    await queryClient.cancelQueries();
-    queryClient.clear();
-    await supabase.auth.signOut();
-    navigate({ to: "/auth", replace: true });
-  };
+
+
 
   return (
     <main className="relative min-h-screen overflow-hidden px-6 py-10">
@@ -65,24 +58,7 @@ function DashboardPage() {
       />
 
       <div className="relative mx-auto max-w-3xl">
-        <header className="flex items-center justify-between gap-3">
-          <span className="flex items-center gap-2 font-display text-sm font-semibold">
-            <Sparkles className="size-4 text-primary" />
-            Skill Maps
-          </span>
-          <div className="flex items-center gap-3">
-            <ConnectProfiles />
-            <button
-              type="button"
-              onClick={handleSignOut}
-              title="Sign out"
-              className="flex items-center gap-2 rounded-full border border-border bg-secondary px-4 py-3 text-sm font-medium transition-colors hover:bg-secondary/70"
-            >
-              <LogOut className="size-4" />
-              <span className="hidden sm:inline">Sign out</span>
-            </button>
-          </div>
-        </header>
+
 
         <h1 className="mt-8 text-4xl font-bold leading-tight md:text-5xl">
           {name ? (
