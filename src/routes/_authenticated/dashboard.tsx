@@ -65,24 +65,7 @@ function DashboardPage() {
       />
 
       <div className="relative mx-auto max-w-3xl">
-        <header className="flex items-center justify-between gap-3">
-          <span className="flex items-center gap-2 font-display text-sm font-semibold">
-            <Sparkles className="size-4 text-primary" />
-            Skill Maps
-          </span>
-          <div className="flex items-center gap-3">
-            <ConnectProfiles />
-            <button
-              type="button"
-              onClick={handleSignOut}
-              title="Sign out"
-              className="flex items-center gap-2 rounded-full border border-border bg-secondary px-4 py-3 text-sm font-medium transition-colors hover:bg-secondary/70"
-            >
-              <LogOut className="size-4" />
-              <span className="hidden sm:inline">Sign out</span>
-            </button>
-          </div>
-        </header>
+
 
         <h1 className="mt-8 text-4xl font-bold leading-tight md:text-5xl">
           {name ? (
