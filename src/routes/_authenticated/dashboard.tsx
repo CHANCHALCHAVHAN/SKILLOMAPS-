@@ -1,11 +1,10 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { useQueryClient } from "@tanstack/react-query";
-import { Compass, HelpCircle, LogOut, Sparkles } from "lucide-react";
+import { Compass, HelpCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import { ConnectProfiles } from "@/components/ConnectProfiles";
 import { Dashboard } from "@/components/Dashboard";
 import { MentorPanel } from "@/components/MentorPanel";
+
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
   head: () => ({
